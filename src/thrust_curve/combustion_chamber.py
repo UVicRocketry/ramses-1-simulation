@@ -54,14 +54,16 @@ class cc():
 
         #setup
         self.m_dot_fuel = 0#self.L*self.rho_fuel*self.r_dot_t*(2*np.sqrt(self.A_port_t*np.pi))
-
+        
+        #print(f'Initial: P_cc={self.P_cc}, OF={self.OF}')
 
 
 
         
 
     def inst(self, m_dot_ox, P_exit):
-
+        
+        #print(f'P_cc={self.P_cc}, OF={self.OF}')
 
         #print( "ox m dot: ", m_dot_ox, " cc mass flow rate: ", self.m_dot_cc_t, " port area: ", self.A_port_t )
         #oxidizer mass flux iteration loop to get mass flow rate
@@ -77,7 +79,7 @@ class cc():
 
             self.r_dot_t = self.a*(G_ox_t)**self.n
             
-            m_dot_fuel = self.L*self.rho_fuel*self.r_dot_t*(2*np.sqrt(self.A_port_t*np.pi))
+            m_dot_fuel = self.L*self.rho_fuel+self.r_dot_t*(2*np.sqrt(self.A_port_t*np.pi))
 
             self.m_dot_cc_t  = m_dot_ox + m_dot_fuel
 
@@ -91,6 +93,10 @@ class cc():
 
         #solve fluid properties
         fluid_prop = self.C.get_Chamber_MolWt_gamma(self.P_cc, self.OF, (self.A_exit/self.A_throat))
+        print(f'fluid props: {fluid_prop}')
+            #print(f'P_cc = {self.P_cc}, OF = {self.OF}, A_exit = {self.A_exit}, A_throat = {self.A_throat}')
+            #print(f'fluidProp[0] = {fluid_prop[0]}, fluidProp[1]={fluid_prop[1]}')
+        
         self.R = 8314/fluid_prop[0]
         self.y = fluid_prop[1]
 

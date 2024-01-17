@@ -16,6 +16,7 @@ def run():
     if user_input =='1':
         print("Running Thrust Curve from inputs in constants.py")
         from src.thrust_curve import thrust_curve
+        thrust_curve.run_thrust_curve()
 
     if user_input =='2':
         print("Running Flight Sim from inputs in constants.py")
@@ -26,5 +27,5 @@ def run():
         from src.sensitivity_analysis import sensitivity_analysis
 
     if user_input =='4':
-        from src.thrust_curve import thrust_curve
+        #from src.thrust_curve import thrust_curve
         from src.model_validation import model_validation

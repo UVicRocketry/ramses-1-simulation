@@ -16,8 +16,8 @@ r_tank,intometer(2.75),m --> for trajectory sim
 height_tank,intometer(40),m --> for trajectory sim
 V_tank,0.00937,m^3
 P_tank,5000000,Pa
-fill_level,0.6,
-C_inj,0.0000083,
+fill_level,0.6, unitless
+C_inj,0.0000083, unitless
 P_atm,101325,Pa
 timestep,0.05,s
 all_error,0.01,
